@@ -23,8 +23,9 @@ exports.useDetailsTabs = void 0;
 const react_1 = __importStar(require("react"));
 const constants_1 = require("../components/constants");
 const Highlight_1 = require("../components/Highlight/Highlight");
-const regularItems = ['Data', 'Options'];
-function useDetailsTabs(currentStatus) {
+const Logs_1 = require("../components/Logs/Logs");
+const regularItems = ['Data', 'Options', 'Logs'];
+function useDetailsTabs(currentStatus, queueName) {
     const [tabs, updateTabs] = react_1.useState([]);
     const [selectedTabIdx, setSelectedTabIdx] = react_1.useState(0);
     const selectedTab = tabs[selectedTabIdx];
@@ -38,12 +39,15 @@ function useDetailsTabs(currentStatus) {
             selectTab: () => setSelectedTabIdx(index),
         })),
         selectedTab,
-        getTabContent: ({ data, returnValue, opts, failedReason, stacktrace, }) => {
+        getTabContent: ({ id, data, returnValue, opts, failedReason, stacktrace, }) => {
             switch (selectedTab) {
                 case 'Data':
                     return (react_1.default.createElement(Highlight_1.Highlight, { language: "json" }, JSON.stringify({ data, returnValue }, null, 2)));
                 case 'Options':
                     return (react_1.default.createElement(Highlight_1.Highlight, { language: "json" }, JSON.stringify(opts, null, 2)));
+                case 'Logs': {
+                    return react_1.default.createElement(Logs_1.Logs, { jobId: id, queueName: queueName });
+                }
                 case 'Error':
                     return (react_1.default.createElement(react_1.default.Fragment, null,
                         !failedReason && react_1.default.createElement("div", { className: "error" }, 'NA'),

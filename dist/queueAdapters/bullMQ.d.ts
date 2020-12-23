@@ -9,6 +9,7 @@ export declare class BullMQAdapter implements QueueAdapter {
     getName(): string;
     clean(jobStatus: JobCleanStatus, graceTimeMs: number): Promise<void>;
     getJob(id: string): Promise<Job | undefined>;
+    getLogs(id: string): Promise<string[]>;
     getJobs(jobStatuses: JobStatus[], start?: number, end?: number): Promise<Job[]>;
     getJobCounts(...jobStatuses: JobStatus[]): Promise<JobCounts>;
 }

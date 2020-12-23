@@ -4,6 +4,7 @@ import { Status } from '../../constants';
 interface DetailsProps {
     job: AppJob;
     status: Status;
+    queueName: string;
 }
-export declare const Details: ({ status, job }: DetailsProps) => JSX.Element | null;
+export declare const Details: ({ status, job, queueName }: DetailsProps) => JSX.Element | null;
 export {};

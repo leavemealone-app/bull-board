@@ -4,12 +4,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Details = void 0;
-const react_1 = __importDefault(require("react"));
-const useDetailsTabs_1 = require("../../../hooks/useDetailsTabs");
 const Button_1 = require("../Button/Button");
+const react_1 = __importDefault(require("react"));
 const Details_module_css_1 = __importDefault(require("./Details.module.css"));
-const Details = ({ status, job }) => {
-    const { tabs, getTabContent } = useDetailsTabs_1.useDetailsTabs(status);
+const useDetailsTabs_1 = require("../../../hooks/useDetailsTabs");
+const Details = ({ status, job, queueName }) => {
+    const { tabs, getTabContent } = useDetailsTabs_1.useDetailsTabs(status, queueName);
     if (tabs.length === 0) {
         return null;
     }

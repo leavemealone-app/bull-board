@@ -9,6 +9,7 @@ export declare class BullAdapter implements QueueAdapter {
     getName(): string;
     clean(jobStatus: JobCleanStatus, graceTimeMs: number): Promise<any>;
     getJob(id: string): Promise<Job | undefined | null>;
+    getLogs(id: string): Promise<string[]>;
     getJobs(jobStatuses: JobStatus[], start?: number, end?: number): Promise<Job[]>;
     getJobCounts(..._jobStatuses: JobStatus[]): Promise<JobCounts>;
 }

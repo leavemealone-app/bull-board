@@ -15,6 +15,7 @@ export interface QueueAdapter {
     getName(): string;
     getJob(id: string): Promise<Job | JobMq | undefined | null>;
     getJobs(jobStatuses: JobStatus[], start?: number, end?: number): Promise<(Job | JobMq)[]>;
+    getLogs(id: string): Promise<string[]>;
     getJobCounts(...jobStatuses: JobStatus[]): Promise<JobCounts>;
     clean(queueStatus: JobCleanStatus, graceTimeMs: number): Promise<any>;
 }

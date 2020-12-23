@@ -18,6 +18,9 @@ class BullAdapter {
     getJob(id) {
         return this.queue.getJob(id);
     }
+    getLogs(id) {
+        return this.queue.getJobLogs(id).then(({ logs }) => logs);
+    }
     getJobs(jobStatuses, start, end) {
         return this.queue.getJobs(jobStatuses, start, end);
     }
